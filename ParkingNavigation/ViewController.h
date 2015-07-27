@@ -13,14 +13,19 @@
 #import "AFURLRequestSerialization.h"
 #import "AFURLResponseSerialization.h"
 #import "SwiftyJSON.h"
+#import "CustomAnnotaionView.h"
 
 #define kDefaultControlMargin           22
 #define kDefaultLocationZoomLevel       16.1
+#define kDefaultLocationZoomLevel       16.1
+#define kDefaultControlMargin           22
+#define kDefaultCalloutViewMargin       -8
 
 @interface ViewController : UIViewController <MAMapViewDelegate>
-
-@property (nonatomic,strong) MAMapView *mapView;
+@property (readwrite, nonatomic, strong) NSArray *parkArray;
+@property (nonatomic,strong) MAMapView *gdMapView;
 @property (nonatomic,strong) UIButton *locationBtn;
+@property (nonatomic,strong) UIButton *trackBtn;
 
 @end
 

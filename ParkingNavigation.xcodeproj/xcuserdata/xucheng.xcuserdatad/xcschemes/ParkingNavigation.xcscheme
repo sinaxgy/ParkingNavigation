@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C5E241C61B493D50006CD3D2"
-               BuildableName = "ParkingNavigation.app"
+               BuildableName = "&#x505c;&#x8f66;&#x573a;&#x5bfc;&#x822a;.app"
                BlueprintName = "ParkingNavigation"
                ReferencedContainer = "container:ParkingNavigation.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5E241C61B493D50006CD3D2"
-            BuildableName = "ParkingNavigation.app"
+            BuildableName = "&#x505c;&#x8f66;&#x573a;&#x5bfc;&#x822a;.app"
             BlueprintName = "ParkingNavigation"
             ReferencedContainer = "container:ParkingNavigation.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5E241C61B493D50006CD3D2"
-            BuildableName = "ParkingNavigation.app"
+            BuildableName = "&#x505c;&#x8f66;&#x573a;&#x5bfc;&#x822a;.app"
             BlueprintName = "ParkingNavigation"
             ReferencedContainer = "container:ParkingNavigation.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C5E241C61B493D50006CD3D2"
-            BuildableName = "ParkingNavigation.app"
+            BuildableName = "&#x505c;&#x8f66;&#x573a;&#x5bfc;&#x822a;.app"
             BlueprintName = "ParkingNavigation"
             ReferencedContainer = "container:ParkingNavigation.xcodeproj">
          </BuildableReference>
