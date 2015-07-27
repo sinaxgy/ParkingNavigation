@@ -27,6 +27,11 @@
 		C5013F5A1B626E9C00C07EB6 /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5013F561B626E9C00C07EB6 /* Info-iOS.plist */; };
 		C5013F5B1B626E9C00C07EB6 /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5013F571B626E9C00C07EB6 /* Info-OSX.plist */; };
 		C5013F5C1B626E9C00C07EB6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5013F591B626E9C00C07EB6 /* SwiftyJSON.swift */; };
+		C5B1C5121B63AF3800A7CD8F /* CustomAnnotaionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B1C5111B63AF3800A7CD8F /* CustomAnnotaionView.m */; };
+		C5D9CC3A1B65D4ED00F603F0 /* location_lo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D9CC391B65D4ED00F603F0 /* location_lo@2x.png */; };
+		C5D9CC3C1B65DB9A00F603F0 /* point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D9CC3B1B65DB9A00F603F0 /* point@2x.png */; };
+		C5D9CC3E1B65FAD000F603F0 /* parking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D9CC3D1B65FAD000F603F0 /* parking@2x.png */; };
+		C5D9CC411B66095E00F603F0 /* noparking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D9CC401B66095E00F603F0 /* noparking@2x.png */; };
 		C5DC11F31B63AD4400BD78A3 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DC11F21B63AD4400BD78A3 /* CustomCalloutView.m */; };
 		C5E241CD1B493D50006CD3D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E241CC1B493D50006CD3D2 /* main.m */; };
 		C5E241D01B493D50006CD3D2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E241CF1B493D50006CD3D2 /* AppDelegate.m */; };
@@ -116,9 +121,15 @@
 		C5013F571B626E9C00C07EB6 /* Info-OSX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-OSX.plist"; path = "JSON/Info-OSX.plist"; sourceTree = "<group>"; };
 		C5013F581B626E9C00C07EB6 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = JSON/SwiftyJSON.h; sourceTree = "<group>"; };
 		C5013F591B626E9C00C07EB6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = JSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		C5B1C5101B63AF3800A7CD8F /* CustomAnnotaionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomAnnotaionView.h; path = Classes/CustomAnnotaionView.h; sourceTree = "<group>"; };
+		C5B1C5111B63AF3800A7CD8F /* CustomAnnotaionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotaionView.m; path = Classes/CustomAnnotaionView.m; sourceTree = "<group>"; };
+		C5D9CC391B65D4ED00F603F0 /* location_lo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_lo@2x.png"; path = "Resources/location_lo@2x.png"; sourceTree = "<group>"; };
+		C5D9CC3B1B65DB9A00F603F0 /* point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "point@2x.png"; path = "Resources/point@2x.png"; sourceTree = "<group>"; };
+		C5D9CC3D1B65FAD000F603F0 /* parking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "parking@2x.png"; path = "Resources/parking@2x.png"; sourceTree = "<group>"; };
+		C5D9CC401B66095E00F603F0 /* noparking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "noparking@2x.png"; path = "Resources/noparking@2x.png"; sourceTree = "<group>"; };
 		C5DC11F11B63AD4400BD78A3 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCalloutView.h; path = Classes/CustomCalloutView.h; sourceTree = "<group>"; };
 		C5DC11F21B63AD4400BD78A3 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCalloutView.m; path = Classes/CustomCalloutView.m; sourceTree = "<group>"; };
-		C5E241C71B493D50006CD3D2 /* ParkingNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E241C71B493D50006CD3D2 /* 停车场导航.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "停车场导航.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5E241CB1B493D50006CD3D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5E241CC1B493D50006CD3D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C5E241CE1B493D50006CD3D2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -261,7 +272,7 @@
 		C5E241C81B493D50006CD3D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C5E241C71B493D50006CD3D2 /* ParkingNavigation.app */,
+				C5E241C71B493D50006CD3D2 /* 停车场导航.app */,
 				C5E241E01B493D50006CD3D2 /* ParkingNavigationTests.xctest */,
 			);
 			name = Products;
@@ -276,6 +287,8 @@
 				C5E241D21B493D50006CD3D2 /* ViewController.m */,
 				C5DC11F11B63AD4400BD78A3 /* CustomCalloutView.h */,
 				C5DC11F21B63AD4400BD78A3 /* CustomCalloutView.m */,
+				C5B1C5101B63AF3800A7CD8F /* CustomAnnotaionView.h */,
+				C5B1C5111B63AF3800A7CD8F /* CustomAnnotaionView.m */,
 				C5E241D41B493D50006CD3D2 /* Main.storyboard */,
 				C5E241D71B493D50006CD3D2 /* Images.xcassets */,
 				C5E241D91B493D50006CD3D2 /* LaunchScreen.xib */,
@@ -339,8 +352,12 @@
 		C5E2420F1B49460C006CD3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C5D9CC401B66095E00F603F0 /* noparking@2x.png */,
+				C5D9CC3D1B65FAD000F603F0 /* parking@2x.png */,
 				C5E242101B494636006CD3D2 /* location_no@2x.png */,
 				C5E242111B494636006CD3D2 /* location_yes@2x.png */,
+				C5D9CC391B65D4ED00F603F0 /* location_lo@2x.png */,
+				C5D9CC3B1B65DB9A00F603F0 /* point@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -363,7 +380,7 @@
 			);
 			name = ParkingNavigation;
 			productName = ParkingNavigation;
-			productReference = C5E241C71B493D50006CD3D2 /* ParkingNavigation.app */;
+			productReference = C5E241C71B493D50006CD3D2 /* 停车场导航.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C5E241DF1B493D50006CD3D2 /* ParkingNavigationTests */ = {
@@ -427,13 +444,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5E241D61B493D50006CD3D2 /* Main.storyboard in Resources */,
+				C5D9CC3A1B65D4ED00F603F0 /* location_lo@2x.png in Resources */,
 				C5E242121B494636006CD3D2 /* location_no@2x.png in Resources */,
+				C5D9CC3C1B65DB9A00F603F0 /* point@2x.png in Resources */,
 				C5E241DB1B493D50006CD3D2 /* LaunchScreen.xib in Resources */,
 				C5013F5B1B626E9C00C07EB6 /* Info-OSX.plist in Resources */,
 				C5013F5A1B626E9C00C07EB6 /* Info-iOS.plist in Resources */,
 				C5E241FA1B4942DB006CD3D2 /* AMap.bundle in Resources */,
 				C5E241D81B493D50006CD3D2 /* Images.xcassets in Resources */,
 				C5E242131B494636006CD3D2 /* location_yes@2x.png in Resources */,
+				C5D9CC411B66095E00F603F0 /* noparking@2x.png in Resources */,
+				C5D9CC3E1B65FAD000F603F0 /* parking@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +478,7 @@
 				C5013EE81B626B3D00C07EB6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				C5013F5C1B626E9C00C07EB6 /* SwiftyJSON.swift in Sources */,
 				C5013EEE1B626B3D00C07EB6 /* UIRefreshControl+AFNetworking.m in Sources */,
+				C5B1C5121B63AF3800A7CD8F /* CustomAnnotaionView.m in Sources */,
 				C5013EEB1B626B3D00C07EB6 /* UIButton+AFNetworking.m in Sources */,
 				C5013F0C1B626B4F00C07EB6 /* AFURLSessionManager.m in Sources */,
 				C5013F061B626B4F00C07EB6 /* AFHTTPSessionManager.m in Sources */,
@@ -609,7 +631,7 @@
 				INFOPLIST_FILE = ParkingNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = SwiftClass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "停车场导航";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParkingNavigation/ParkingNavigation-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -630,7 +652,7 @@
 				INFOPLIST_FILE = ParkingNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = SwiftClass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "停车场导航";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParkingNavigation/ParkingNavigation-Bridging-Header.h";
 			};
 			name = Release;

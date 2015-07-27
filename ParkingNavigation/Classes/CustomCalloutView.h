@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+#define kArrorHeight        10
+
+#define kPortraitMargin     5
+#define kPortraitWidth      50
+#define kPortraitHeight     50
+
+#define kTitleWidth         220
+#define kTitleHeight        20
+
 @interface CustomCalloutView : UIView
+
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
 
 @end
