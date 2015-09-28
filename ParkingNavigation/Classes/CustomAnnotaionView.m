@@ -40,7 +40,7 @@
                                                   -CGRectGetHeight(self.calloutView.bounds) / 2.f + self.calloutOffset.y);
         }
         
-        self.calloutView.image = [UIImage imageNamed:@"parking"];
+        self.calloutView.image = [UIImage imageNamed:@"car"];
         self.calloutView.title = self.annotation.title;
         self.calloutView.subtitle = self.annotation.subtitle;
         
