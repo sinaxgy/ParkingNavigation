@@ -7,13 +7,20 @@
 //
 
 #import "ViewController.h"
+#import <AMapSearchKit/AMapSearchAPI.h>
 
-#define key c6a010e9d1e147319198817afd4de5d2
-#define ip  @"10.104.7.110:8080"
-//#define ip  @"123.57.254.235"
+#define key @"c6a010e9d1e147319198817afd4de5d2"
+//#define ip  @"10.104.7.110:8080"
+#define ip  @"123.57.254.235"
 
 @interface ViewController ()
-
+{
+    MAPointAnnotation *destinationPoint;
+    MAPointAnnotation *targetPoint;
+    AMapSearchAPI *search;
+    CLLocation *user_Location;
+    NSArray *pathPolylines;
+}
 @end
 
 @implementation ViewController
@@ -21,9 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self fetch:nil];
+    search = [[AMapSearchAPI alloc] initWithSearchKey:key Delegate:self];
     [self initMapView];
     [self initControllers];
+    [self locationAction];
 }
 
 #pragma mark initialization
@@ -43,6 +51,17 @@
     [_trackBtn setImage:[UIImage imageNamed:@"noparking"] forState:UIControlStateSelected];
     [_trackBtn addTarget:self action:@selector(trackParkAction:) forControlEvents:UIControlEventTouchUpInside];
     [gdMapView addSubview:_trackBtn];
+    
+    
+    UIButton *pathButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    pathButton.frame = CGRectMake(100, CGRectGetHeight(self.view.bounds) - 50, 25, 25);
+    pathButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+    pathButton.backgroundColor = [UIColor whiteColor];
+    [pathButton setImage:[UIImage imageNamed:@"path"] forState:UIControlStateNormal];
+    pathButton.backgroundColor = [UIColor clearColor];
+    [pathButton addTarget:self action:@selector(pathAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [gdMapView addSubview:pathButton];
 }
 
 - (void) initMapView
@@ -54,9 +73,30 @@
     self.gdMapView.delegate = self;
     [self.view addSubview:self.gdMapView];
     gdMapView.showsUserLocation = YES;
-    gdMapView.headingFilter = 10;
+    gdMapView.headingFilter = 100;
     gdMapView.desiredAccuracy = kCLLocationAccuracyKilometer;
     gdMapView.distanceFilter = 10;
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [gdMapView addGestureRecognizer:longPress];
+}
+
+#pragma mark aciton
+
+- (void) longPress:(UILongPressGestureRecognizer*)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        CLLocationCoordinate2D coordinate = [gdMapView convertPoint:[recognizer locationInView:gdMapView] toCoordinateFromView:gdMapView];
+        if (targetPoint) {
+            [gdMapView removeAnnotation:targetPoint];
+            targetPoint = nil;
+        }
+        targetPoint = [[MAPointAnnotation alloc]init];
+        targetPoint.coordinate = coordinate;
+        targetPoint.title = @"目的地";
+        [gdMapView addAnnotation:targetPoint];
+        
+        [self fetch:coordinate];
+    }
 }
 
 - (void) locationAction
@@ -71,41 +111,162 @@
     }
 }
 
+- (void) pathAction {
+    if (!destinationPoint || !user_Location || !search) {
+        return;
+    }
+    AMapNavigationSearchRequest *request = [[AMapNavigationSearchRequest alloc] init];
+    request.searchType = AMapSearchType_NaviDrive;
+    request.origin = [AMapGeoPoint locationWithLatitude:user_Location.coordinate.latitude longitude:user_Location.coordinate.longitude];
+    request.destination = [AMapGeoPoint locationWithLatitude:destinationPoint.coordinate.latitude longitude:destinationPoint.coordinate.longitude];
+    [search AMapNavigationSearch:request];
+}
+
+- (NSArray *)polylinesForPath:(AMapPath*)path {
+    if (!path || path.steps.count == 0) {
+        return nil;
+    }
+    NSMutableArray *polylines = [NSMutableArray array];
+    NSLog(@"距离:%ld,\n耗时:%ld,\n导航策略:%@\n费用tolls:%f,\n收费路段长度tollDistance%ld",(long)[path distance],path.duration,path.strategy,path.tolls,(long)path.tollDistance);
+//    for (NSString *value in path.steps) {
+//        NSLog(@"steps:%@",value);
+//    }
+    [path.steps enumerateObjectsUsingBlock:^(AMapStep *step, NSUInteger idx, BOOL *stop) {
+        NSUInteger count = 0;
+        CLLocationCoordinate2D *coordinates = [self coordinatesForString:step.polyline
+                                                         coordinateCount:&count
+                                                              parseToken:@";"];
+        
+        MAPolyline *polyline = [MAPolyline polylineWithCoordinates:coordinates count:count];
+        [polylines addObject:polyline];
+        
+        free(coordinates), coordinates = NULL;
+    }];
+    return polylines;
+}
+
+- (CLLocationCoordinate2D *)coordinatesForString:(NSString *)string
+                                 coordinateCount:(NSUInteger *)coordinateCount
+                                      parseToken:(NSString *)token
+{
+    if (string == nil)
+    {
+        return NULL;
+    }
+    
+    if (token == nil)
+    {
+        token = @",";
+    }
+    
+    NSString *str = @"";
+    if (![token isEqualToString:@","])
+    {
+        str = [string stringByReplacingOccurrencesOfString:token withString:@","];
+    }
+    
+    else
+    {
+        str = [NSString stringWithString:string];
+    }
+    
+    NSArray *components = [str componentsSeparatedByString:@","];
+    NSUInteger count = [components count] / 2;
+    if (coordinateCount != NULL)
+    {
+        *coordinateCount = count;
+    }
+    CLLocationCoordinate2D *coordinates = (CLLocationCoordinate2D*)malloc(count * sizeof(CLLocationCoordinate2D));
+    
+    for (int i = 0; i < count; i++)
+    {
+        coordinates[i].longitude = [[components objectAtIndex:2 * i]     doubleValue];
+        coordinates[i].latitude  = [[components objectAtIndex:2 * i + 1] doubleValue];
+    }
+    
+    return coordinates;
+}
+
 - (void) trackParkAction:(UIButton*)sender {
     sender.selected = !sender.selected;
 }
 
 - (void)setParkArray:(NSArray *)parkArray{
-    if (self.parkArray) {
-        [self.gdMapView removeAnnotations:self.parkArray];
+    if (_parkArray) {
+        [self.gdMapView removeAnnotations:_parkArray];
     }
-    NSLog(@"%@>>>>>>%@",self.parkArray,parkArray);
-    //self.parkArray = parkArray;
+    _parkArray = parkArray;
     [self.gdMapView addAnnotations:parkArray];
 }
 
+#pragma mark - AMapSearchDelegate
+- (void) searchRequest:(id)request didFailWithError:(NSError *)error {
+    NSLog(@"request:%@,error:%@",request,error);
+}
+
+- (void)onNavigationSearchDone:(AMapNavigationSearchRequest *)request response:(AMapNavigationSearchResponse *)response {
+    if (response.count > 0) {
+        if (pathPolylines) {
+            [gdMapView removeOverlays:pathPolylines];
+            pathPolylines = @[];
+        }
+        NSLog(@"request paths num:%lu",(unsigned long)response.route.paths.count);
+        [response.route.paths enumerateObjectsUsingBlock:^(AMapPath* path, NSUInteger idx, BOOL *stop) {
+            NSLog(@"%lu",(unsigned long)idx);
+            pathPolylines = [self polylinesForPath:path];
+            [gdMapView addOverlays:pathPolylines];
+            [gdMapView showAnnotations:@[destinationPoint,gdMapView.userLocation] animated:YES];
+        }];
+    }
+}
+
+
 #pragma mark MAMapViewDelegete
+- (MAOverlayView*)mapView:(MAMapView *)mapView viewForOverlay:(id<MAOverlay>)overlay {
+    if ([overlay isKindOfClass:[MAPolyline class]]) {
+        MAPolylineView *polylineView = [[MAPolylineView alloc] initWithPolyline:overlay];
+        polylineView.lineWidth = 4;
+        polylineView.strokeColor = [UIColor blueColor];
+        return polylineView;
+    }
+    return nil;
+}
+
 - (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
 {
-    if (updatingLocation) {
-        if (!_trackBtn.selected) {
-            [self fetch:userLocation];
-        }
+    if (self.userAnnotationView) {
+        self.userAnnotationView.transform = CGAffineTransformMakeRotation(userLocation.heading.trueHeading * 6.28 /360);
+    }
+    if (!_trackBtn.selected) {
+        [self fetch:userLocation.location.coordinate];
+    }
+    user_Location = userLocation.location;
+}
+
+- (void)mapView:(MAMapView *)mapView didChangeUserTrackingMode:(MAUserTrackingMode)mode animated:(BOOL)animated
+{
+    // 修改定位按钮状态
+    if (mode == MAUserTrackingModeNone)
+    {
+        [_locationBtn setImage:[UIImage imageNamed:@"location_no"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [_locationBtn setImage:[UIImage imageNamed:@"location_yes"] forState:UIControlStateNormal];
     }
 }
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
 {
-    if ([view.annotation isKindOfClass:[MAUserLocation class]])
-    {
-        //[self reGeoAction];
-    }
-    
     if ([view isKindOfClass:[CustomAnnotationView class]]) {
         CustomAnnotationView *cusView = (CustomAnnotationView *)view;
         CGRect frame = [cusView convertRect:cusView.calloutView.frame toView:self.gdMapView];
         
         frame = UIEdgeInsetsInsetRect(frame, UIEdgeInsetsMake(kDefaultCalloutViewMargin, kDefaultCalloutViewMargin, kDefaultCalloutViewMargin, kDefaultCalloutViewMargin));
+        
+        if ([cusView.annotation isKindOfClass:[MAPointAnnotation class]]) {
+            destinationPoint = cusView.annotation;
+        }
         
         if (!CGRectContainsRect(self.gdMapView.frame, frame))
         {
@@ -118,7 +279,6 @@
             
             [self.gdMapView setCenterCoordinate:coordinate animated:YES];
         }
-        
     }
 }
 
@@ -127,6 +287,7 @@
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
         static NSString *reuseIndetifier = @"userReuseIndentifier";
         MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
+        self.userAnnotationView = [[MAAnnotationView alloc] init];
         if (annotationView == nil)
         {
             annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
@@ -134,17 +295,27 @@
             annotationView.layer.backgroundColor = (__bridge CGColorRef)([UIColor redColor]);
             annotationView.opaque = YES;
         }
+        self.userAnnotationView = annotationView;
         return annotationView;
     }
     
     if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
         static NSString *reuseIndetifier = @"annotationReuseIndetifier";
+        if ([[annotation title] isEqualToString:@"目的地"]) {
+            MAAnnotationView *annotaionView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"targetView"];
+            if (!annotaionView) {
+                annotaionView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"targetView"];
+            }
+            annotaionView.image = [UIImage imageNamed:@"target"];
+            annotaionView.canShowCallout = YES;
+            return annotaionView;
+        }
         CustomAnnotationView *annotationView = (CustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
         if (annotationView == nil)
         {
             annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
         }
-        annotationView.image = [UIImage imageNamed:@"point"];
+        annotationView.image = [UIImage imageNamed:@"point1"];
         annotationView.canShowCallout = NO;
         // 设置中心点偏移，使得标注底部中间点成为经纬度对应点
         annotationView.centerOffset = CGPointMake(0, -18);
@@ -154,7 +325,7 @@
 }
 
 #pragma MARK :---- 不同于Swift,OC中的json的key值不能为中文
-- (void) fetch:(MAUserLocation *)userLocation {
+- (void) fetch:(CLLocationCoordinate2D )coordinate {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
@@ -165,19 +336,14 @@
     
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    NSString *url = [self fourPointStringWithUserLocation:userLocation];
-    if (!userLocation) {
-        url = [NSString stringWithFormat:@"http://%@/YLQ/searchPoints.action?en=1,300&es=1,2&wn=4,2&ws=3,2",ip];
-    }
+    NSString *url = [self fourPointStringWithCoordinate:coordinate];
+    
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]) {
-            NSLog(@"objects:%@----array:%@",responseObject,self.parkArray);
             self.parkArray = [self annotationsWithObjects:responseObject];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //NSLog(@"Error: %@", error);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"读取信息失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alert show];
+        NSLog(@"Error: %@", error);
     }];
 }
 
@@ -188,7 +354,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        //NSLog(@"JSON: %@", responseObject);
         if (block) {
             block((NSDictionary*)responseObject);
         }
@@ -200,13 +366,13 @@
     }];
 }
 
-- (NSString*)fourPointStringWithUserLocation:(MAUserLocation *)userLocation {
-    CGFloat latitudeSouth = userLocation.location.coordinate.latitude - 3*0.008983f;
-    CGFloat latitudeNorth = userLocation.location.coordinate.latitude + 3*0.008983f;
-    CGFloat longitudeEast = userLocation.location.coordinate.longitude + 3*0.008984f;
-    CGFloat longitudeWest = userLocation.location.coordinate.longitude - 3*0.008984f;
+- (NSString*)fourPointStringWithCoordinate:(CLLocationCoordinate2D )coordinate {
+    CGFloat latitudeSouth = coordinate.latitude - 3*0.008983f;
+    CGFloat latitudeNorth = coordinate.latitude + 3*0.008983f;
+    CGFloat longitudeEast = coordinate.longitude + 3*0.008984f;
+    CGFloat longitudeWest = coordinate.longitude - 3*0.008984f;
     NSString * url = [NSString stringWithFormat:@"http://%@/YLQ/searchPoints.action?en=%f,%f&es=%f,%f&wn=%f,%f&ws=%f,%f",ip,longitudeEast,latitudeNorth,longitudeEast,latitudeSouth,longitudeWest,latitudeNorth,longitudeWest,latitudeSouth];
-    NSLog(@"%@",url);
+    //NSLog(@"%@",url);
     return url;
 }
 
