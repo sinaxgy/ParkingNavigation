@@ -40,20 +40,21 @@
 		C5E241DB1B493D50006CD3D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5E241D91B493D50006CD3D2 /* LaunchScreen.xib */; };
 		C5E241E71B493D50006CD3D2 /* ParkingNavigationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E241E61B493D50006CD3D2 /* ParkingNavigationTests.m */; };
 		C5E241F71B4942C8006CD3D2 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E241F51B4942C8006CD3D2 /* AMapSearchKit.framework */; };
-		C5E241F81B4942C8006CD3D2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E241F61B4942C8006CD3D2 /* MAMapKit.framework */; };
 		C5E241FA1B4942DB006CD3D2 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5E241F91B4942DB006CD3D2 /* AMap.bundle */; };
 		C5E241FC1B4942F1006CD3D2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E241FB1B4942F1006CD3D2 /* SystemConfiguration.framework */; };
 		C5E241FE1B494300006CD3D2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E241FD1B494300006CD3D2 /* OpenGLES.framework */; };
 		C5E242001B49430F006CD3D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E241FF1B49430F006CD3D2 /* CoreGraphics.framework */; };
 		C5E242021B49431B006CD3D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E242011B49431B006CD3D2 /* QuartzCore.framework */; };
 		C5E242041B494325006CD3D2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E242031B494325006CD3D2 /* CoreLocation.framework */; };
-		C5E242061B49433B006CD3D2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E242051B49433B006CD3D2 /* libz.dylib */; };
-		C5E242081B494345006CD3D2 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E242071B494345006CD3D2 /* libstdc++.6.0.9.dylib */; };
 		C5E2420A1B49434D006CD3D2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E242091B49434D006CD3D2 /* Security.framework */; };
 		C5E2420C1B49435C006CD3D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E2420B1B49435C006CD3D2 /* UIKit.framework */; };
 		C5E2420E1B49436E006CD3D2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E2420D1B49436E006CD3D2 /* CoreTelephony.framework */; };
 		C5E242121B494636006CD3D2 /* location_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E242101B494636006CD3D2 /* location_no@2x.png */; };
 		C5E242131B494636006CD3D2 /* location_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E242111B494636006CD3D2 /* location_yes@2x.png */; };
+		C5EC0D2C1BB8DF22008769BF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC0D2B1BB8DF22008769BF /* libz.tbd */; };
+		C5EC0D2E1BB8DF31008769BF /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC0D2D1BB8DF31008769BF /* libstdc++.6.0.9.tbd */; };
+		C5EC0D301BB8DF40008769BF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC0D2F1BB8DF40008769BF /* libc++.tbd */; };
+		C5EC0D321BB8DFA0008769BF /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5EC0D311BB8DFA0008769BF /* MAMapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,21 +141,22 @@
 		C5E241E51B493D50006CD3D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5E241E61B493D50006CD3D2 /* ParkingNavigationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkingNavigationTests.m; sourceTree = "<group>"; };
 		C5E241F51B4942C8006CD3D2 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = Framework/AMapSearchKit.framework; sourceTree = "<group>"; };
-		C5E241F61B4942C8006CD3D2 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = Framework/MAMapKit.framework; sourceTree = "<group>"; };
 		C5E241F91B4942DB006CD3D2 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		C5E241FB1B4942F1006CD3D2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C5E241FD1B494300006CD3D2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		C5E241FF1B49430F006CD3D2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C5E242011B49431B006CD3D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C5E242031B494325006CD3D2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C5E242051B49433B006CD3D2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		C5E242071B494345006CD3D2 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		C5E242091B49434D006CD3D2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C5E2420B1B49435C006CD3D2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C5E2420D1B49436E006CD3D2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C5E242101B494636006CD3D2 /* location_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_no@2x.png"; path = "Resources/location_no@2x.png"; sourceTree = "<group>"; };
 		C5E242111B494636006CD3D2 /* location_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_yes@2x.png"; path = "Resources/location_yes@2x.png"; sourceTree = "<group>"; };
 		C5E242161B496103006CD3D2 /* ParkingNavigation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkingNavigation-Prefix.pch"; sourceTree = "<group>"; };
+		C5EC0D2B1BB8DF22008769BF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C5EC0D2D1BB8DF31008769BF /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		C5EC0D2F1BB8DF40008769BF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		C5EC0D311BB8DFA0008769BF /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = Framework/MAMapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,18 +164,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5EC0D321BB8DFA0008769BF /* MAMapKit.framework in Frameworks */,
+				C5EC0D301BB8DF40008769BF /* libc++.tbd in Frameworks */,
+				C5EC0D2E1BB8DF31008769BF /* libstdc++.6.0.9.tbd in Frameworks */,
+				C5EC0D2C1BB8DF22008769BF /* libz.tbd in Frameworks */,
+				C5E241F71B4942C8006CD3D2 /* AMapSearchKit.framework in Frameworks */,
 				C5E2420E1B49436E006CD3D2 /* CoreTelephony.framework in Frameworks */,
 				C5E2420C1B49435C006CD3D2 /* UIKit.framework in Frameworks */,
 				C5E2420A1B49434D006CD3D2 /* Security.framework in Frameworks */,
-				C5E242081B494345006CD3D2 /* libstdc++.6.0.9.dylib in Frameworks */,
-				C5E242061B49433B006CD3D2 /* libz.dylib in Frameworks */,
 				C5E242041B494325006CD3D2 /* CoreLocation.framework in Frameworks */,
 				C5E242021B49431B006CD3D2 /* QuartzCore.framework in Frameworks */,
 				C5E242001B49430F006CD3D2 /* CoreGraphics.framework in Frameworks */,
 				C5E241FE1B494300006CD3D2 /* OpenGLES.framework in Frameworks */,
 				C5E241FC1B4942F1006CD3D2 /* SystemConfiguration.framework in Frameworks */,
-				C5E241F81B4942C8006CD3D2 /* MAMapKit.framework in Frameworks */,
-				C5E241F71B4942C8006CD3D2 /* AMapSearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,11 +320,13 @@
 		C5E241F41B4942BA006CD3D2 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				C5EC0D311BB8DFA0008769BF /* MAMapKit.framework */,
+				C5EC0D2F1BB8DF40008769BF /* libc++.tbd */,
+				C5EC0D2D1BB8DF31008769BF /* libstdc++.6.0.9.tbd */,
+				C5EC0D2B1BB8DF22008769BF /* libz.tbd */,
 				C5E2420D1B49436E006CD3D2 /* CoreTelephony.framework */,
 				C5E2420B1B49435C006CD3D2 /* UIKit.framework */,
 				C5E242091B49434D006CD3D2 /* Security.framework */,
-				C5E242071B494345006CD3D2 /* libstdc++.6.0.9.dylib */,
-				C5E242051B49433B006CD3D2 /* libz.dylib */,
 				C5E242031B494325006CD3D2 /* CoreLocation.framework */,
 				C5E242011B49431B006CD3D2 /* QuartzCore.framework */,
 				C5E241FF1B49430F006CD3D2 /* CoreGraphics.framework */,
@@ -329,7 +334,6 @@
 				C5E241FB1B4942F1006CD3D2 /* SystemConfiguration.framework */,
 				C5E241F91B4942DB006CD3D2 /* AMap.bundle */,
 				C5E241F51B4942C8006CD3D2 /* AMapSearchKit.framework */,
-				C5E241F61B4942C8006CD3D2 /* MAMapKit.framework */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -394,11 +398,16 @@
 		C5E241BF1B493D50006CD3D2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "徐成";
 				TargetAttributes = {
 					C5E241C61B493D50006CD3D2 = {
 						CreatedOnToolsVersion = 6.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					C5E241DF1B493D50006CD3D2 = {
 						CreatedOnToolsVersion = 6.3;
@@ -543,6 +552,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -616,6 +626,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ParkingNavigation/ParkingNavigation-Prefix.pch";
 				INFOPLIST_FILE = ParkingNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ParkingNavigation;
 				PRODUCT_MODULE_NAME = SwiftClass;
 				PRODUCT_NAME = "停车场导航";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParkingNavigation/ParkingNavigation-Bridging-Header.h";
@@ -637,6 +648,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ParkingNavigation/ParkingNavigation-Prefix.pch";
 				INFOPLIST_FILE = ParkingNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ParkingNavigation;
 				PRODUCT_MODULE_NAME = SwiftClass;
 				PRODUCT_NAME = "停车场导航";
 				SWIFT_OBJC_BRIDGING_HEADER = "ParkingNavigation/ParkingNavigation-Bridging-Header.h";
@@ -657,6 +669,7 @@
 				);
 				INFOPLIST_FILE = ParkingNavigationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Pursue.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkingNavigation.app/ParkingNavigation";
 			};
@@ -672,6 +685,7 @@
 				);
 				INFOPLIST_FILE = ParkingNavigationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Pursue.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkingNavigation.app/ParkingNavigation";
 			};

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SwiftClass-swift.h"
 #import <MAMapKit/MAMapKit.h>
 #import "AFNetworking/AFNetworking.h"
 #import "AFURLRequestSerialization.h"
