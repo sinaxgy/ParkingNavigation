@@ -67,7 +67,7 @@
 - (void) initMapView
 {
     self.view.backgroundColor = [UIColor grayColor];
-    gdMapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
+    gdMapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     gdMapView.compassOrigin = CGPointMake(gdMapView.compassOrigin.x, kDefaultControlMargin);
     gdMapView.scaleOrigin = CGPointMake(gdMapView.scaleOrigin.x, kDefaultControlMargin);
     self.gdMapView.delegate = self;
